@@ -1,0 +1,6 @@
+
+== Model
+
+```
+include::../models/sample.cto[]
+```

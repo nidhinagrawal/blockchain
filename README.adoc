@@ -1,0 +1,37 @@
+# carauction from nidhi
+
+This business network defines the following models:
+
+include::doc/source.adoc[]
+
+To test this Business Network Definition in the **Test** tab:
+
+Create a `SampleParticipant` participant:
+
+  {
+    "$class": "org.car.carauction.SampleParticipant",
+    "participantId": "Toby",
+    "firstName": "Tobias",
+    "lastName": "Hunter"
+  }
+
+Create a `SampleAsset` asset:
+
+  {
+    "$class": "org.car.carauction.SampleAsset",
+    "assetId": "assetId:1",
+    "owner": "resource:org.car.carauction.SampleParticipant#Toby",
+    "value": "original value"
+  }
+
+Submit a `SampleTransaction` transaction:
+
+  {
+    "$class": "org.car.carauction.SampleTransaction",
+    "asset": "resource:org.car.carauction.SampleAsset#assetId:1",
+    "newValue": "new value"
+  }
+
+After submitting this transaction, you should now see the transaction in the Transaction Registry and that a `SampleEvent` has been emitted. As a result, the value of the `assetId:1` should now be `new value` in the Asset Registry.
+
+Congratulations!
